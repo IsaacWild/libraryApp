@@ -80,9 +80,9 @@ body{
 }
 
 .btnRead:hover {
-  background-color: #DBA159;
   transition: 0.3s;
   transform: translateY(-3px);
+  text-decoration: underline wavy;
 }
 
 .btnDelete{
@@ -97,7 +97,6 @@ body{
 }
 
 .btnDelete:hover {
-  background-color: #DBA159;
   transition: 0.3s; 
   transform: translateY(-3px) rotate(15deg);
 }
