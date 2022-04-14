@@ -15,7 +15,7 @@ body{
   display: grid;
   grid-template-rows: 150px 1fr;
   font-size: 24px;
-  background-color: #E8E8E8;
+  background-color: #F7FFDD;
 }
 
 .headerContainer{
@@ -28,25 +28,27 @@ body{
   text-align: center;
   column-gap:20px;
   align-content: center; 
-  background-color: #564256;
+  background-color: #D0E3CC;
   padding: 1rem;
 }
 
 .logo{
   grid-column: 1/2;
-  border: red solid;
-  background-color: coral;
+  font-size: 6rem;
 }
 
 .title{
   grid-column: 2/3;
-  border: green dashed;
-  background-color: lightgreen;
+  font-size: 4rem;
+  font-style: italic;
+}
+.title p{
+  margin: 0;
 }
 
 .cardGridContainer{
   grid-row:2/3;
-  background-color: #BFBFBF;
+  background-color: #F7FFDD;
   gap: 1rem;
   padding: 1rem;
   display: grid;
@@ -56,8 +58,8 @@ body{
 }
 
 .bookCard{
-  background: white;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+  background: #FCFDAF;
+  box-shadow: 8px 7px 12px 3px rgba(0, 0, 0, 0.3);
   padding: 0.8rem;
   border-radius: 0.8rem;
   width: clamp(250px, 350px, 400px);
@@ -78,20 +80,24 @@ body{
 }
 
 .btnRead:hover {
-  background-color: #FC814A;
-  transition: 0.4s;
+  background-color: #DBA159;
+  transition: 0.3s;
+  transform: translateY(-3px);
 }
 
 .btnDelete{
   border:none;
   background: none;
   border-radius: 1em;
-  font-size: 2rem;
+  font-size: 2.4rem;
   width: 40%;
   justify-self: center;
+  display: grid;
+  align-self:center
 }
 
 .btnDelete:hover {
-  background-color: #FC814A;
-  transition: 0.4s;
+  background-color: #DBA159;
+  transition: 0.3s; 
+  transform: translateY(-3px) rotate(15deg);
 }
