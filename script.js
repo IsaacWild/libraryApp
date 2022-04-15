@@ -22,10 +22,6 @@ function addBookToLibrary(title, author, pages, readbook) {
 
 }
 
-
-
-
-
 function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   const bookContainer = document.querySelector('.cardGridContainer');
   const bookCardDiv = document.createElement('div');
@@ -55,6 +51,12 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   bookCardRead.classList.add('cardRead');
   const bookRead = document.createElement('p');
   bookRead.textContent = givenReadbook;
+  if (givenReadbook == true){
+    bookRead.textContent = "✔";
+    bookCardDiv.classList.add('bookCardRead');
+  } else if (givenReadbook == false){
+    bookRead.textContent = "⨯";
+  }
 
 
   const btnRead = document.createElement('button');
@@ -84,33 +86,14 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   btnRead.addEventListener("click",() =>{
     toggleRead(this);
     function toggleRead(){
-      bookCardDiv.classList.toggle('bookCardRead');
+      if(bookRead.textContent == "✔"){
+        bookRead.textContent = "⨯";
+        bookCardDiv.classList.toggle('bookCardRead');
+      }else if(bookRead.textContent == "⨯"){
+        bookRead.textContent = "✔";
+        bookCardDiv.classList.toggle('bookCardRead');
+      }
     }
   })
+  
 }
-
-
-
-
-// function readBook(){
-//   alert("I read this book!")
-// }
-
-// NOT working at all!?!
-// const btnDelete = document.querySelector(".btnDelete");
-// btnDelete.addEventListener("click", () => {
-//   console.log("Test");
-// });
-
-
-// const cardGridContainer = document.querySelector(".cardGridContainer")
-
-// function addBook(){
-//   const bookCard = document.createElement("div");
-//   cardGridContainer.appendChild(bookCard);
-//   bookCard.classList.add("bookCard");
-//   const cardTitle = document.createElement("div");
-//   bookCard.appendChild(bookTitle);
-//   bookCard.cardTitle.add("cardTitle");
-
-// }
