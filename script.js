@@ -7,3 +7,7 @@ function Book() {
 function addBookToLibrary() {
   // do stuff here
 }
+
+function readBook(){
+  
+}
