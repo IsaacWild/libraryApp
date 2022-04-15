@@ -22,41 +22,75 @@ function addBookToLibrary(title, author, pages, readbook) {
 
 }
 
-const bookContainer = document.querySelector('.cardGridContainer');
-const bookCardDiv = document.createElement('div');
-bookCardDiv.classList.add('bookCard');
 
-const bookCardTitle = document.createElement('p');
-bookCardTitle.textContent = 'Title:'
-bookCardTitle.classList.add('cardTitle');
 
-const bookCardAuthor = document.createElement('p');
-bookCardAuthor.textContent = 'Author:'
-bookCardAuthor.classList.add('cardAuthor');
 
-const bookCardPages = document.createElement('p');
-bookCardPages.textContent = 'Pages:'
-bookCardPages.classList.add('cardPages');
 
-const bookCardRead = document.createElement('p');
-bookCardRead.textContent = 'Read:'
-bookCardRead.classList.add('cardRead');
+function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
+  const bookContainer = document.querySelector('.cardGridContainer');
+  const bookCardDiv = document.createElement('div');
+  bookCardDiv.classList.add('bookCard');
+  const bookCardTitle = document.createElement('p');
+  bookCardTitle.textContent = 'Title:'
+  bookCardTitle.classList.add('cardTitle');
+  const bookTitle = document.createElement('p');
+  bookTitle.textContent = givenTitle;
+  
 
-const bookCardPages = document.createElement('button');
-bookCardPages.textContent = 'Read'
-bookCardPages.classList.add('cardPages');
+  const bookCardAuthor = document.createElement('p');
+  bookCardAuthor.textContent = 'Author:'
+  bookCardAuthor.classList.add('cardAuthor');
+  const bookAuthor = document.createElement('p');
+  bookAuthor.textContent = givenAuthor;
 
-const bookCardPages = document.createElement('button');
-bookCardPages.textContent = 'Pages:'
-bookCardPages.classList.add('cardPages');
+  const bookCardPages = document.createElement('p');
+  bookCardPages.textContent = 'Pages:'
+  bookCardPages.classList.add('cardPages');
+  const bookPages = document.createElement('p');
+  bookPages.textContent = givenPages;
 
-bookContainer.appendChild(bookCardDiv);
-bookCardDiv.appendChild(bookCardTitle);
-bookCardDiv.appendChild(bookCardAuthor);
-bookCardDiv.appendChild(bookCardPages);
-bookCardDiv.appendChild(bookCardRead);
-bookCardDiv.appendChild(btnRead);
-bookCardDiv.appendChild(btnDelete);
+
+  const bookCardRead = document.createElement('p');
+  bookCardRead.textContent = 'Read:'
+  bookCardRead.classList.add('cardRead');
+  const bookRead = document.createElement('p');
+  bookRead.textContent = givenReadbook;
+
+
+  const btnRead = document.createElement('button');
+  btnRead.textContent = 'Read'
+  btnRead.classList.add('btnRead');
+  const btnDelete = document.createElement('button');
+  btnDelete.textContent = '🗑'
+  btnDelete.classList.add('btnDelete');
+
+  bookContainer.appendChild(bookCardDiv);
+  bookCardDiv.appendChild(bookCardTitle);
+  bookCardDiv.appendChild(bookTitle);
+  bookCardDiv.appendChild(bookCardAuthor);
+  bookCardDiv.appendChild(bookAuthor);
+  bookCardDiv.appendChild(bookCardPages);
+  bookCardDiv.appendChild(bookPages);
+  bookCardDiv.appendChild(bookCardRead);
+  bookCardDiv.appendChild(bookRead);
+  bookCardDiv.appendChild(btnRead);
+  bookCardDiv.appendChild(btnDelete);
+  btnDelete.addEventListener("click", () => {
+    remove(this);
+    function remove(){
+      bookContainer.removeChild(bookCardDiv);
+    }
+  })
+  btnRead.addEventListener("click",() =>{
+    toggleRead(this);
+    function toggleRead(){
+      bookCardDiv.classList.toggle('bookCardRead');
+    }
+  })
+}
+
+
+
 
 // function readBook(){
 //   alert("I read this book!")
