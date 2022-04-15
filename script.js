@@ -4,6 +4,12 @@ let myLibrary = [
     'author':'J.R.R Tolkien',
     'pages':295,
     'readbook': true
+  },
+  {
+    'title':'The not Hobbit',
+    'author':'Not J.R.R Tolkien',
+    'pages':69,
+    'readbook': false
   }
 ]
 
@@ -17,12 +23,19 @@ function Book(title, author, pages, readbook) {
 function addBookToLibrary(title, author, pages, readbook) {
   // do stuff here
   
-  const newBook = new Book(title, author, pages, readbook);
-  myLibrary.push(newBook);
-
+  // const newBook = new Book(title, author, pages, readbook);
+  // myLibrary.push(newBook);
+  // for (let element of myLibrary){
+  //   createCard(myLibrary[element].title, myLibrary[e].author,myLibrary[e].pages,myLibrary[e].readbook)
+  // }
+  for (let i = 0; i < myLibrary.length; i++) {
+    const Book = myLibrary[i];
+    createCard(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].readbook)
+  }
 }
 
 function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
+  
   const bookContainer = document.querySelector('.cardGridContainer');
   const bookCardDiv = document.createElement('div');
   bookCardDiv.classList.add('bookCard');
