@@ -9,5 +9,5 @@ function addBookToLibrary() {
 }
 
 function readBook(){
-  
+  const bookCard = document.querySelector(".")
 }
