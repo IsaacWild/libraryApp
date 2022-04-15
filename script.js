@@ -1,5 +1,5 @@
 let myLibrary = [];
-const bookCard = document.querySelector("#bookCard");
+const bookCard = document.querySelector(".bookCard");
 const btnRead = document.querySelector(".btnRead");
 const btnDelete = document.querySelector(".btnDelete");
 btnRead.addEventListener("click", () => {
