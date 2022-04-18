@@ -6,9 +6,21 @@ body{
   margin: 0;
 }
 
+fieldset{
+  border: none;
+}
+
+li{
+  list-style: none;
+}
+
+input[type=checkbox]{
+  
+}
+
 .pageContainer{
   display: grid;
-  grid-template-rows: 150px 1fr;
+  grid-template-rows: 150px 150px 1fr;
   font-size: 24px;
   background-color: #F7FFDD;
 }
@@ -27,6 +39,27 @@ body{
   padding: 1rem;
 }
 
+.inputHeader{
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 2rem 1fr;
+  justify-items: center;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+}
+
+.newbook{
+  grid-area: 2/1/3/-1;
+}
+
+.inputLabel{
+  grid-area: 1/1/2/-1;
+  align-self: center;
+  justify-self: center;
+}
+
 .logo{
   grid-column: 1/2;
   font-size: 6rem;
@@ -42,7 +75,7 @@ body{
 }
 
 .cardGridContainer{
-  grid-row:2/3;
+  grid-row:3/4;
   background-color: #F7FFDD;
   gap: 1rem;
   padding: 1rem;

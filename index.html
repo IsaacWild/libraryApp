@@ -19,41 +19,30 @@
       <div class="title">
         <p>Welcome to your library</p>
         <button onclick="addBookToLibrary()">Add Card</button>
+        <button onclick="removeAll()">Remove All</button>
       </div>
     </div>
+    <div class="inputHeader">
+      <p class="inputLabel">Add a new book to your library</p>
+      <ul>
+        <li><label for="bookTitle">Book Title</label></li>
+        <li><input type="text" name="bookTitle" id="bookTitle"></li>
+      </ul>
+      <ul>
+        <li><label for="bookAuthor">Book Author</label></li>
+        <li><input type="text" name="bookAuthor" id="bookAuthor"></li>
+      </ul>
+      <ul>
+        <li><label for="bookPages">Pages</label></li>
+        <li><input type="number" name="bookPages" id="bookPages" min="0"></li>
+      </ul>
+      <ul>
+        <li><label for="readBook">Read book</label></li>
+        <li><input type="checkbox" name="readBook" id="readBook"></li>
+      </ul>
+    </div>
     <div class="cardGridContainer">
-      <!-- <div class="bookCard">
-        <p class="cardTitle">Title: </p>
-        <p class="cardAuthor">Author:</p>
-        <p class="cardPages">Pages: </p>
-        <p class="cardRead">Read: </p>
-        <button class="btnRead">Read</button>
-        <button class="btnDelete">🗑</button>
-      </div>
-      <div class="bookCard">
-        <p class="cardTitle">Title: </p>
-        <p class="cardAuthor">Author:</p>
-        <p class="cardPages">Pages: </p>
-        <p class="cardRead">Read: </p>
-        <button class="btnRead">Read</button>
-        <button class="btnDelete">🗑</button>
-      </div>
-      <div class="bookCard">
-        <p class="cardTitle">Title: </p>
-        <p class="cardAuthor">Author:</p>
-        <p class="cardPages">Pages: </p>
-        <p class="cardRead">Read: </p>
-        <button class="btnRead">Read</button>
-        <button class="btnDelete">🗑</button>
-      </div>
-      <div class="bookCard">
-        <p class="cardTitle">Title: </p>
-        <p class="cardAuthor">Author:</p>
-        <p class="cardPages">Pages: </p>
-        <p class="cardRead">Read: </p>
-        <button class="btnRead">Read</button>
-        <button class="btnDelete">🗑</button>
-      </div> -->
+      
     </div>
   </div>
 </body>

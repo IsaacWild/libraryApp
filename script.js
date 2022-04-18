@@ -12,6 +12,7 @@ let myLibrary = [
     'readbook': false
   }
 ]
+const bookContainer = document.querySelector('.cardGridContainer');
 
 function Book(title, author, pages, readbook) {
   this.title = title
@@ -36,7 +37,7 @@ function addBookToLibrary(title, author, pages, readbook) {
 
 function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   
-  const bookContainer = document.querySelector('.cardGridContainer');
+  
   const bookCardDiv = document.createElement('div');
   bookCardDiv.classList.add('bookCard');
   const bookCardTitle = document.createElement('p');
@@ -109,4 +110,10 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
     }
   })
   
+}
+function removeAll(){
+  while(bookContainer.firstChild){
+    bookContainer.removeChild(bookContainer.lastChild);
+    
+  }
 }
