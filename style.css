@@ -4,6 +4,7 @@
 
 body{
   margin: 0;
+  background-color: #F7FFDD;
 }
 
 fieldset{
@@ -15,7 +16,8 @@ li{
 }
 
 input[type=checkbox]{
-  
+  height: 2rem;
+  width: 2rem;
 }
 
 .pageContainer{
@@ -48,6 +50,10 @@ input[type=checkbox]{
   align-items: center;
   justify-content: center; 
   text-align: center;
+}
+
+.inputHeader input{
+  font-size: 1.6rem;
 }
 
 .newbook{

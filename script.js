@@ -22,22 +22,33 @@ function Book(title, author, pages, readbook) {
 }
 
 function addBookToLibrary(title, author, pages, readbook) {
-  // do stuff here
+  const newTitle = document.querySelector('#newTitle');
+  const newAuthor = document.querySelector('#newAuthor');
+  const newPages = document.querySelector('#newPages');
+  const newReadbookCheckbox = document.querySelector('#newReadbook')
+  let newReadbook = false;
   
-  // const newBook = new Book(title, author, pages, readbook);
-  // myLibrary.push(newBook);
-  // for (let element of myLibrary){
-  //   createCard(myLibrary[element].title, myLibrary[e].author,myLibrary[e].pages,myLibrary[e].readbook)
-  // }
-  for (let i = 0; i < myLibrary.length; i++) {
-    const Book = myLibrary[i];
-    createCard(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].readbook)
+  if(newTitle.value == '' || newAutho.value == '' || newPages.value == ''){
+    alert('There is missing book info')
+  } else{
+    removeAll();
+    if (document.getElementById('newReadbook').checked){
+      newReadbook = true;
+    }
+    const newBook = new Book(newTitle.value, newAuthor.value, newPages.value, newReadbook);
+    myLibrary.push(newBook);
+  
+    for (let i = 0; i < myLibrary.length; i++) {
+      createCard(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].readbook)
+      newTitle.value = '';
+      newAuthor.value = '';
+      newPages.value = '';
+      newReadbookCheckbox.checked = false;
+    }
   }
 }
 
 function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
-  
-  
   const bookCardDiv = document.createElement('div');
   bookCardDiv.classList.add('bookCard');
   const bookCardTitle = document.createElement('p');
@@ -45,7 +56,6 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   bookCardTitle.classList.add('cardTitle');
   const bookTitle = document.createElement('p');
   bookTitle.textContent = givenTitle;
-  
 
   const bookCardAuthor = document.createElement('p');
   bookCardAuthor.textContent = 'Author:'
@@ -59,7 +69,6 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   const bookPages = document.createElement('p');
   bookPages.textContent = givenPages;
 
-
   const bookCardRead = document.createElement('p');
   bookCardRead.textContent = 'Read:'
   bookCardRead.classList.add('cardRead');
@@ -71,7 +80,6 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   } else if (givenReadbook == false){
     bookRead.textContent = "⨯";
   }
-
 
   const btnRead = document.createElement('button');
   btnRead.textContent = 'Read'
@@ -92,13 +100,19 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   bookCardDiv.appendChild(btnRead);
   bookCardDiv.appendChild(btnDelete);
   btnDelete.addEventListener("click", () => {
-    remove(this);
+    remove();
     function remove(){
       bookContainer.removeChild(bookCardDiv);
+      for (let i = 0; i < myLibrary.length; i++) {
+        if(myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent){
+          myLibrary.splice(i,1);
+        }
+      }
     }
   })
+
   btnRead.addEventListener("click",() =>{
-    toggleRead(this);
+    toggleRead();
     function toggleRead(){
       if(bookRead.textContent == "✔"){
         bookRead.textContent = "⨯";
@@ -109,11 +123,11 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
       }
     }
   })
-  
 }
+
+
 function removeAll(){
   while(bookContainer.firstChild){
     bookContainer.removeChild(bookContainer.lastChild);
-    
   }
 }

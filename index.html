@@ -19,30 +19,29 @@
       <div class="title">
         <p>Welcome to your library</p>
         <button onclick="addBookToLibrary()">Add Card</button>
-        <button onclick="removeAll()">Remove All</button>
+        <button onclick="removeAll()">Clear</button>
       </div>
     </div>
     <div class="inputHeader">
       <p class="inputLabel">Add a new book to your library</p>
       <ul>
-        <li><label for="bookTitle">Book Title</label></li>
-        <li><input type="text" name="bookTitle" id="bookTitle"></li>
+        <li><label for="newTitle">Book Title</label></li>
+        <li><input type="text" name="newTitle" id="newTitle" placeholder="What's the book called?"></li>
       </ul>
       <ul>
-        <li><label for="bookAuthor">Book Author</label></li>
-        <li><input type="text" name="bookAuthor" id="bookAuthor"></li>
+        <li><label for="newAuthor">Book Author</label></li>
+        <li><input type="text" name="newAuthor" id="newAuthor" placeholder="Who wrote the book?"></li>
       </ul>
       <ul>
-        <li><label for="bookPages">Pages</label></li>
-        <li><input type="number" name="bookPages" id="bookPages" min="0"></li>
+        <li><label for="newPages">Pages</label></li>
+        <li><input type="number" name="newPages" id="newPages" min="0" placeholder="How many pages is it?"></li>
       </ul>
       <ul>
-        <li><label for="readBook">Read book</label></li>
-        <li><input type="checkbox" name="readBook" id="readBook"></li>
+        <li><label for="newReadbook">Read book</label></li>
+        <li><input type="checkbox" name="newReadbook" value="true" id="newReadbook"></li>
       </ul>
     </div>
     <div class="cardGridContainer">
-      
     </div>
   </div>
 </body>
