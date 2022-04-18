@@ -1,17 +1,5 @@
-let myLibrary = [
-  {
-    'title':'The Hobbit',
-    'author':'J.R.R Tolkien',
-    'pages':295,
-    'readbook': true
-  },
-  {
-    'title':'The not Hobbit',
-    'author':'Not J.R.R Tolkien',
-    'pages':69,
-    'readbook': false
-  }
-]
+let myLibrary = []
+
 const bookContainer = document.querySelector('.cardGridContainer');
 
 function Book(title, author, pages, readbook) {
@@ -21,14 +9,14 @@ function Book(title, author, pages, readbook) {
   this.readbook = readbook
 }
 
-function addBookToLibrary(title, author, pages, readbook) {
+function addBookToLibrary() {
   const newTitle = document.querySelector('#newTitle');
   const newAuthor = document.querySelector('#newAuthor');
   const newPages = document.querySelector('#newPages');
   const newReadbookCheckbox = document.querySelector('#newReadbook')
   let newReadbook = false;
   
-  if(newTitle.value == '' || newAutho.value == '' || newPages.value == ''){
+  if(newTitle.value == '' || newAuthor.value == '' || newPages.value == ''){
     alert('There is missing book info')
   } else{
     removeAll();
@@ -37,14 +25,17 @@ function addBookToLibrary(title, author, pages, readbook) {
     }
     const newBook = new Book(newTitle.value, newAuthor.value, newPages.value, newReadbook);
     myLibrary.push(newBook);
-  
-    for (let i = 0; i < myLibrary.length; i++) {
-      createCard(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].readbook)
-      newTitle.value = '';
-      newAuthor.value = '';
-      newPages.value = '';
-      newReadbookCheckbox.checked = false;
-    }
+    displayLibrary();
+    newTitle.value = '';
+    newAuthor.value = '';
+    newPages.value = '';
+    newReadbookCheckbox.checked = false;
+  }
+}
+
+function displayLibrary(){
+  for (let i = 0; i < myLibrary.length; i++) {
+    createCard(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].readbook)
   }
 }
 
@@ -117,9 +108,19 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
       if(bookRead.textContent == "✔"){
         bookRead.textContent = "⨯";
         bookCardDiv.classList.toggle('bookCardRead');
+        for (let i = 0; i < myLibrary.length; i++) {
+          if(myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent){
+            myLibrary[i].readbook = false;
+          }
+        }
       }else if(bookRead.textContent == "⨯"){
         bookRead.textContent = "✔";
         bookCardDiv.classList.toggle('bookCardRead');
+        for (let i = 0; i < myLibrary.length; i++) {
+          if(myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent){
+            myLibrary[i].readbook = true;
+          }
+        }
       }
     }
   })
