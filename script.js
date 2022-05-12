@@ -2,25 +2,27 @@ let myLibrary = []
 
 const bookContainer = document.querySelector('.cardGridContainer');
 
-function Book(title, author, pages, readbook) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.readbook = readbook
-}
+class Book {
+  constructor(title, author, pages, readbook){
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.readbook = readbook
+  }
 
+}
 function addBookToLibrary() {
   const newTitle = document.querySelector('#newTitle');
   const newAuthor = document.querySelector('#newAuthor');
   const newPages = document.querySelector('#newPages');
   const newReadbookCheckbox = document.querySelector('#newReadbook')
   let newReadbook = false;
-  
-  if(newTitle.value == '' || newAuthor.value == '' || newPages.value == ''){
+
+  if (newTitle.value == '' || newAuthor.value == '' || newPages.value == '') {
     alert('There is missing book info')
-  } else{
+  } else {
     removeAll();
-    if (document.getElementById('newReadbook').checked){
+    if (document.getElementById('newReadbook').checked) {
       newReadbook = true;
     }
     const newBook = new Book(newTitle.value, newAuthor.value, newPages.value, newReadbook);
@@ -33,13 +35,13 @@ function addBookToLibrary() {
   }
 }
 
-function displayLibrary(){
+function displayLibrary() {
   for (let i = 0; i < myLibrary.length; i++) {
     createCard(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].readbook)
   }
 }
 
-function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
+function createCard(givenTitle, givenAuthor, givenPages, givenReadbook) {
   const bookCardDiv = document.createElement('div');
   bookCardDiv.classList.add('bookCard');
   const bookCardTitle = document.createElement('p');
@@ -65,10 +67,10 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   bookCardRead.classList.add('cardRead');
   const bookRead = document.createElement('p');
   bookRead.textContent = givenReadbook;
-  if (givenReadbook == true){
+  if (givenReadbook == true) {
     bookRead.textContent = "✔";
     bookCardDiv.classList.add('bookCardRead');
-  } else if (givenReadbook == false){
+  } else if (givenReadbook == false) {
     bookRead.textContent = "⨯";
   }
 
@@ -92,32 +94,32 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
   bookCardDiv.appendChild(btnDelete);
   btnDelete.addEventListener("click", () => {
     remove();
-    function remove(){
+    function remove() {
       bookContainer.removeChild(bookCardDiv);
       for (let i = 0; i < myLibrary.length; i++) {
-        if(myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent){
-          myLibrary.splice(i,1);
+        if (myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent) {
+          myLibrary.splice(i, 1);
         }
       }
     }
   })
 
-  btnRead.addEventListener("click",() =>{
+  btnRead.addEventListener("click", () => {
     toggleRead();
-    function toggleRead(){
-      if(bookRead.textContent == "✔"){
+    function toggleRead() {
+      if (bookRead.textContent == "✔") {
         bookRead.textContent = "⨯";
         bookCardDiv.classList.toggle('bookCardRead');
         for (let i = 0; i < myLibrary.length; i++) {
-          if(myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent){
+          if (myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent) {
             myLibrary[i].readbook = false;
           }
         }
-      }else if(bookRead.textContent == "⨯"){
+      } else if (bookRead.textContent == "⨯") {
         bookRead.textContent = "✔";
         bookCardDiv.classList.toggle('bookCardRead');
         for (let i = 0; i < myLibrary.length; i++) {
-          if(myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent){
+          if (myLibrary[i].title == bookTitle.textContent && myLibrary[i].author == bookAuthor.textContent) {
             myLibrary[i].readbook = true;
           }
         }
@@ -127,8 +129,8 @@ function createCard(givenTitle, givenAuthor, givenPages, givenReadbook){
 }
 
 
-function removeAll(){
-  while(bookContainer.firstChild){
+function removeAll() {
+  while (bookContainer.firstChild) {
     bookContainer.removeChild(bookContainer.lastChild);
   }
 }
